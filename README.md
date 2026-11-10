@@ -16,23 +16,30 @@ Template de base pour le développement d'un microservice au sein d'une architec
 
 ## 1. Choix technologique & Justification
 
-Dans le cadre d'un projet ETL/BI en microservices, le choix de la stack s'est orienté vers **Python 3.14 + FastAPI** pour les raisons suivantes :
+### Mon choix : Python & FastAPI
 
-| Critère | FastAPI / Python | Express / Node.js (Alternative) | Justification |
-| :--- | :--- | :--- | :--- |
-| **Pertinence BI / ETL** | ⭐⭐⭐⭐⭐ (Standard de l'industrie) | ⭐⭐⭐ | Python dispose de l'écosystème data le plus riche (Pandas, Polars, DuckDB, SQLAlchemy). |
-| **Swagger / OpenAPI** | **Natif & Automatique** | Requiert `tsoa` / plugins tiers | FastAPI génère la spec OpenAPI 3.1 sans aucune configuration ni étape de build. |
-| **Typage & Validation** | Modèles Pydantic V2 | TypeScript + Décorateurs | Typage strict à l'exécution et sérialisation JSON haute performance (moteur Rust). |
-| **Moteur de test** | Pytest + `httpx2` | Jest + Supertest | Tests légers, asynchrones, exécutables en une commande avec couverture fonctionnelle. |
+#### Pourquoi ce choix ?
+Durant mon CFC, je n'ai jamais eu de cours sur Python. J'ai donc profité de ce projet pour me lancer et découvrir ce langage. 
+
+C'est une techno qui m'intéressait depuis un moment :
+* La syntaxe a l'air simple et rapide à prendre en main.
+* C'est ultra pratique à avoir dans sa boîte à outils : ça permet aussi bien de faire un petit script rapide pour dépanner que de développer des applications complètes.
+* Beaucoup de choses fonctionnent directement sans devoir installer ou configurer des tonnes de trucs compliqués (« ça marche direct »).
+* Pour un projet de BI et d'ETL, c'est idéal car Python est très utilisé pour tout ce qui touche à la manipulation de données.
+
+#### Pourquoi FastAPI ?
+J'ai choisi FastAPI comme framework web principalement pour deux raisons :
+1. **La documentation Swagger automatique** : Contrairement à d'autres frameworks où il faut installer des plugins ou écrire la doc à la main, FastAPI s'occupe de tout tout seul sur `/docs`.
+2. **La simplicité du code** : Il y a très peu de code à écrire pour exposer une route propre comme `/health`.
 
 ### 🔗 Ressources & Liens étudiés pour la mise en place :
-* **12 Factor App** : [The Twelve-Factor App Methodology](https://12factor.net/)
-* **FastAPI Core & Routage** : [Documentation officielle FastAPI](https://fastapi.tiangolo.com/)
-* **Bonnes pratiques d'architecture FastAPI** : [FastAPI Best Practices Guide](https://github.com/zhanymkanov/fastapi-best-practices)
-* **Validation de schémas (Pydantic V2)** : [Pydantic V2 Documentation](https://docs.pydantic.dev/latest/)
-* **Gestion moderne des settings** : [Pydantic Settings & ConfigDict](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
-* **Moteur de test Pytest** : [Pytest Documentation](https://docs.pytest.org/en/stable/)
-* **Configuration Debugging dans VS Code** : [VS Code Python Debugging Guide](https://code.visualstudio.com/docs/python/debugging)
+* [Documentation officielle FastAPI](https://fastapi.tiangolo.com/) : prise en main du framework et création de la route `/health`.
+* [FastAPI Best Practices Guide](https://github.com/zhanymkanov/fastapi-best-practices) : organisation et découpage des dossiers du projet.
+* [The Twelve-Factor App](https://12factor.net/) : règles et bonnes pratiques pour concevoir des microservices.
+* [Documentation Pydantic V2](https://docs.pydantic.dev/latest/) : validation des types et création du modèle de réponse.
+* [Documentation Pydantic Settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) : gestion centralisée des variables de configuration.
+* [Documentation officielle Pytest](https://docs.pytest.org/en/stable/) : mise en place et exécution des tests fonctionnels.
+* [Guide de débogage Python dans VS Code](https://code.visualstudio.com/docs/python/debugging) : configuration du fichier `launch.json` et des points d'arrêt.
 
 ---
 
