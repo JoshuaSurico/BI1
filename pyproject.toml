@@ -1,0 +1,35 @@
+[project]
+name = "BI1"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Joshua",email = "surico.joshua@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.163.1",
+    "uvicorn[standard]>=0.54.0",
+    "httpx2>=2.16.2",
+    "pydantic>=2.14.3",
+    "pydantic-settings>=2.16.3"
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = "MIT"
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+dev = "uvicorn app.main:app --reload --port 8000"
+debug = "uvicorn app.main:app --port 8000"
+test = "pytest"
+cov = "pytest --cov=app"
+test-debug = "pytest -s --pdb"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "debugpy>=1.8.22",
+]
+
